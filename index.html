@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Mon nom de parti</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body class="wrapper">
+    <div class="content">
+      <button onclick="findPartyName()" class="button">
+        Trouver mon nom de parti
+      </button>
+      <div id="name" class="name" />
+    </div>
+
+    <script type="application/javascript">
+      const nameDiv = document.querySelector("#name");
+      const names = [
+        "optimisme",
+        "vision",
+        "force française",
+        "France résistante",
+        "pouvoir",
+        "renouveau",
+        "espoir",
+        "inspiration",
+      ];
+      let usedNames = [];
+
+      function findPartyName() {
+        let randomName = names[Math.floor(Math.random() * names.length)];
+        while (usedNames.includes(randomName)) {
+          randomName = names[Math.floor(Math.random() * names.length)];
+        }
+        nameDiv.textContent = randomName;
+        usedNames.push(randomName);
+
+        if (usedNames.length === names.length) {
+          usedNames = [];
+        }
+      }
+    </script>
+  </body>
+</html>
